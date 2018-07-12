@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gcc -c hello hello.c
+gcc -c hello main.c
