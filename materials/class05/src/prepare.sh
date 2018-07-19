@@ -1,4 +1,3 @@
 #!/bin/bash
 
-yum install uwsgi
-yum install uwsgi-plugin-python
+yum install -y uwsgi uwsgi-plugin-python supervisor
