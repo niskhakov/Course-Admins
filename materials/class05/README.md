@@ -36,8 +36,8 @@ uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/
 Пусть prepare.sh выполнен ещё на предыдущем шаге и проверка запуска uwsgi вручную прошла успешно. Теперь делаем следующее. (при выполнении данного домашнего задания по умолчанию работаем под root-ом) 
 
 ```
-systemctl enable supervisor
-systemctl start supervisor
+systemctl enable supervisord
+systemctl start supervisord
 mkdir -p /var/log/webapps
 cp /root/homework/materials/class05/src/former.ini /etc/supervisor.d/
 supervisorctl reread
