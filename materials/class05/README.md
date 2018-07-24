@@ -39,7 +39,7 @@ uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/
 systemctl enable supervisord
 systemctl start supervisord
 mkdir -p /var/log/webapps
-cp /root/homework/materials/class05/src/former.ini /etc/supervisor.d/
+cp /root/homework/materials/class05/src/former.ini /etc/supervisord.d/
 supervisorctl reread
 supervisorctl update
 ```
