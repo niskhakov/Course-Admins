@@ -1,5 +1,9 @@
 # Admins: HW → WEB
 
+Актуальная версия находится по адресу: [+Dropbox Paper: Admins: HW → WEB](https://paper.dropbox.com/doc/Admins-HW-WEB-Avoss3tD1CtyfWYir1v7S) 
+
+Также ссылка на репозиторий: [+GitHub: Admins: HW → WEB](https://github.com/niskhakov/Admins/tree/Homework5/personal/homework/lesson5)
+
 # Ход работы:
 ## 1 Часть: Запуск “former” под uWSGI
 
