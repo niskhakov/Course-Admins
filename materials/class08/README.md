@@ -16,22 +16,21 @@
 * Откройте prometheus.yml в распакованном архиве prometheus и добавьте в targets node_exporter. Должно выглядить:
 ```yaml
     static_configs:
-    - targets: ['localhost:9100','localhost:80']
+    - targets: ['localhost:9100','localhost:9090']
 ```
 * Запустите node_exporter на стандартном порту.
 ```bash
 ./node_exporter &
 ```
-* Запустите prometheus на порту 80. Пока у нас нет доступов по порту 9090 (default). Предварительно остановите приложение former, седланное на предыдущих занятиях. 
-Или поменяйте порт, на которому будет слушать приложение.
+* Запустите prometheus.
 ```bash
-./prometheus --web.listen-address="0.0.0.0:80" &
+./prometheus &
 ```
 * Заходим на http://grafana.fintech-admin.m1.tinkoff.cloud. Учетные данные совпадают с используемыми на ВМ.
 * Переключаемся в свою организацию (в левом нижнем углу -> switch). Организация будет называться также как и имя вашего пользователя.
 В организации у вас привилегии Admin.
 * Заходите в Configuration организации (значок шестеренки слева). Data Sources -> Add data source.
-* Name: prometheus. Type: Prometheus. URL: http://your-hostname.fintech-admin.m1.tinkoff.cloud:80. Access: Browser (из-за отсутствия доступов). Жмем "Save & Test". 
+* Name: prometheus. Type: Prometheus. URL: http://your-hostname.fintech-admin.m1.tinkoff.cloud:9090. Access: Browser. Жмем "Save & Test". 
 Убеждаемся, что "Data source is working"
 * Переходим во вкладку Dashboards сверху. Жмем Prometheus 2.0 Stats -> Import.
 * Теперь вы можете увидеть этот dashboard во влкадке Dashboards (четыре квадрата слева)
