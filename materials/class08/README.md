@@ -14,15 +14,19 @@
 * Скачайте prometheus - https://github.com/prometheus/prometheus/releases/download/v2.3.2/prometheus-2.3.2.linux-amd64.tar.gz 
 * Скачайте node_exporter - https://github.com/prometheus/node_exporter/releases/download/v0.16.0/node_exporter-0.16.0.linux-amd64.tar.gz 
 * Откройте prometheus.yml в распакованном архиве prometheus и добавьте в targets node_exporter. Должно выглядить:
+
 ```yaml
-    static_configs:
-    - targets: ['localhost:9100','localhost:9090']
+static_configs:
+  - targets: ['localhost:9100','localhost:9090']
 ```
+
 * Запустите node_exporter на стандартном порту.
+
 ```bash
 ./node_exporter &
 ```
 * Запустите prometheus.
+
 ```bash
 ./prometheus &
 ```
@@ -46,7 +50,7 @@
 
 Вам необходимо создать ini скрипты для prometheus и node_exporter самостоятельно и убедится, что сервисы prometheus и node_exporter работают.
 По аналогии с http-сервисом former.
-```
+```bash
 systemctl enable supervisord
 systemctl start supervisord
 mkdir -p /var/log/prometheus /var/log/node_exporter
