@@ -23,7 +23,8 @@
 
 4. Запускаем:
     
-    ```uwsgi \
+    ```
+    uwsgi \
         --plugins=python \
         --http-socket=0.0.0.0:80 
         --wsgi-file /opt/webcode/former/process/webrunner.py \
@@ -42,7 +43,8 @@
 6. Запустил еще раз: все окей.
   Немного не понял как оформить отчет по первому заданию (Строку запуска uwsgi приложения????). Пусть будет так:
     
-    ```uwsgi \
+    ```
+    uwsgi \
         --plugins=python \
         --http-socket=0.0.0.0:80 
         --wsgi-file /opt/webcode/former/process/webrunner.py \
@@ -157,7 +159,9 @@
 - **supervisorctl stop** - останавливает процесс
 
 **4.2.**
-    ```uwsgi \
+
+    ```
+    uwsgi \
         --plugins=python \
         --http-socket=0.0.0.0:80 
         --wsgi-file /opt/webcode/former/process/webrunner.py \
@@ -168,6 +172,7 @@
         --vacuum \
         --max-requests=5000
     ```
+
 - --plugins - загрузить Питоновский uWSGI плагин
 - --http-socket - прибиндить к определенному  tcp сокету используя http протокол
 - --wsgi-file - файл будет исполняться 
