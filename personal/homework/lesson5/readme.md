@@ -1,9 +1,5 @@
 # Admins: HW → WEB
 
-Актуальная версия находится по адресу: [+Dropbox Paper: Admins: HW → WEB](https://paper.dropbox.com/doc/Admins-HW-WEB-Avoss3tD1CtyfWYir1v7S) 
-
-Также ссылка на репозиторий: [+GitHub: Admins: HW → WEB](https://github.com/niskhakov/Admins/tree/Homework5/personal/homework/lesson5)
-
 # Ход работы:
 ## 1 Часть: Запуск “former” под uWSGI
 
@@ -12,6 +8,10 @@
 
 
 2. Добавили исполнение файлу prepare.sh и выполнили его
+    ```
+    chmod +x prepare.sh
+    ./prepare.sh
+    ```
 
 
 3. Выполнили :
@@ -23,7 +23,17 @@
 
 4. Запускаем:
     
-    ```uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/process/webrunner.py --static-map /form=/opt/webcode/former/form/index.html --processes=5 --master --pidfile=/tmp/formdig.pid --vacuum --max-requests=5000```
+    ```uwsgi \
+        --plugins=python \
+        --http-socket=0.0.0.0:80 
+        --wsgi-file /opt/webcode/former/process/webrunner.py \
+        --static-map /form=/opt/webcode/former/form/index.html \
+        --processes=5 \
+        --master \
+        --pidfile=/tmp/formdig.pid \
+        --vacuum \
+        --max-requests=5000
+    ```
 
 
 5. Получаем ошибку, приложение не смогло получить порт 80; посмотрели список использованных портов `netstat -natp`, нашли старого друга: tinyhttpd, убили его) `kill <id>`
@@ -32,7 +42,17 @@
 6. Запустил еще раз: все окей.
   Немного не понял как оформить отчет по первому заданию (Строку запуска uwsgi приложения????). Пусть будет так:
     
-    ```uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/process/webrunner.py --static-map /form=/opt/webcode/former/form/index.html --processes=5 --master --pidfile=/tmp/formdig.pid --vacuum --max-requests=5000```
+    ```uwsgi \
+        --plugins=python \
+        --http-socket=0.0.0.0:80 
+        --wsgi-file /opt/webcode/former/process/webrunner.py \
+        --static-map /form=/opt/webcode/former/form/index.html \
+        --processes=5 \
+        --master \
+        --pidfile=/tmp/formdig.pid \
+        --vacuum \
+        --max-requests=5000
+    ```
 
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_92671068C3A0202807075FDEF0E7A127E23C1E94D764E55E74F0CD78CD383F8C_1532461500585_Form.png)
@@ -124,11 +144,11 @@
 **4.1.** 
 
 - **mkdir -p** - создание директории и недостающие родительские каталоги
-- **cp -R -** рекурсивное перемещение
+- **cp -R -** рекурсивное копирование
 - **netstat -natp** - показывает все сетевые соединения  по TCP и соотв. программы
 ****- **uwsgi** - в следующем пункте
 - **kill** - отправляет сигнал в приложение
-- **systemctl enable <serv>** - создает симлинк, для того чтобы сервис был запущен во после старта системы
+- **systemctl enable <serv>** - создает симлинк, для того чтобы сервис был запущен после старта системы (on boot)
 - **systemctl start <serv>** - стартует сервис
 - **supervisorctl reread** - перезагружает конфиги сервиса без рестарта
 - **supervisorctl update** - перезагружает конфиги сервиса и делает рестарт
@@ -137,16 +157,24 @@
 - **supervisorctl stop** - останавливает процесс
 
 **4.2.**
-
-    uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/process/webrunner.py --static-map /form=/opt/webcode/former/form/index.html --processes=5 --master --pidfile=/tmp/formdig.pid --vacuum --max-requests=5000
-    
+    ```uwsgi \
+        --plugins=python \
+        --http-socket=0.0.0.0:80 
+        --wsgi-file /opt/webcode/former/process/webrunner.py \
+        --static-map /form=/opt/webcode/former/form/index.html \
+        --processes=5 \
+        --master \
+        --pidfile=/tmp/formdig.pid \
+        --vacuum \
+        --max-requests=5000
+    ```
 - --plugins - загрузить Питоновский uWSGI плагин
 - --http-socket - прибиндить к определенному  tcp сокету используя http протокол
 - --wsgi-file - файл будет исполняться 
 - --static-map - словарь (путь=файл)
 - --processes - количество воркеров
 - --master - запускает мастер процесс, который будет перезапускать воркеров, когда те будут падать
-- -pidfile - создает pidfile
+- --pidfile - создает pidfile
 - --vacuum - пытается удалить все сгенерированные файлы\сокеты
 - --max-requests - перезагружает воркеров, после указанного количества обработанных запросов
 
@@ -170,7 +198,7 @@
 
 **4.4.**
 
-
+    ```
     #!/usr/bin/python 
     # Вызов интерпретатора Python
     
@@ -186,5 +214,6 @@
         return ["Method: " + request_method_content + "\n" +
             "Get content: " + request_uri_content + "\n" +
             "Post content: " + wsgi_content + "\n"] # Формирует тело страницы и возвращает вызвавшей её функции
+    ```
     
 
