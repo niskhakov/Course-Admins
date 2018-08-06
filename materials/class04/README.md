@@ -14,7 +14,7 @@ Address: 127.0.0.1
 fintechtestzone	text = "Any text"
 
  nslookup -type=ns fintechtestzone. localhost  
-zonemaster01	nameserver = s-XX.fintech-admin.m1.tinkoff.cloud.
+fintechtestzone	nameserver = s-XX.fintech-admin.m1.tinkoff.cloud.
 
 Описать последовательность ваших действий (набор команд и правок в конфигах с краткими комментариями). Описание сдать через форму выполнения домашнего задания на сайте https://fintech.tinkoff.ru.
 
