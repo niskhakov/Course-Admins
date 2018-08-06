@@ -25,7 +25,7 @@ cp -R /root/homework/materials/class05/src/former /opt/webcode
 uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/process/webrunner.py --static-map /form=/opt/webcode/former/form/index.html --processes=5 --master --pidfile=/tmp/formdig.pid --vacuum --max-requests=5000
 ```
 
-Убеждаемся, что приложение работает, открыв в браузере на терминальном сервере адрес http://YOURPREFIX.m1.fintech-admin.m1.tinkoff.cloud/form (где YOURPREFIX - начало имени вашей машины, до точки), после чего заполнив и отправив форму.
+Убеждаемся, что приложение работает, открыв в браузере на терминальном сервере адрес http://YOURPREFIX.fintech-admin.m1.tinkoff.cloud/form (где YOURPREFIX - начало имени вашей машины, до точки), после чего заполнив и отправив форму.
 
 Для завершения надо остановить процесс uwsgi.
 
@@ -36,15 +36,15 @@ uwsgi --plugins=python --http-socket=0.0.0.0:80 --wsgi-file /opt/webcode/former/
 Пусть prepare.sh выполнен ещё на предыдущем шаге и проверка запуска uwsgi вручную прошла успешно. Теперь делаем следующее. (при выполнении данного домашнего задания по умолчанию работаем под root-ом) 
 
 ```
-systemctl enable supervisor
-systemctl start supervisor
+systemctl enable supervisord
+systemctl start supervisord
 mkdir -p /var/log/webapps
-cp /root/homework/materials/class05/src/former.ini /etc/supervisor.d/
+cp /root/homework/materials/class05/src/former.ini /etc/supervisord.d/
 supervisorctl reread
 supervisorctl update
 ```
 
-Убеждаемся, что приложение работает, открыв в браузере на терминальном сервере всё тот же адрес http://YOURPREFIX.m1.fintech-admin.m1.tinkoff.cloud/form, после чего заполнив и отправив форму.
+Убеждаемся, что приложение работает, открыв в браузере на терминальном сервере всё тот же адрес http://YOURPREFIX.fintech-admin.m1.tinkoff.cloud/form, после чего заполнив и отправив форму.
 
 Убедитесь, что вы можете управлять приложением при помощи supervisor:
 
@@ -56,7 +56,7 @@ supervisorctl start former
 supervisorctl status
 ```
 
-В качестве отчёта по этому заданию скопируйте в форму URL доступа к Вашему приложению: http://YOURPREFIX.m1.fintech-admin.m1.tinkoff.cloud/form.
+В качестве отчёта по этому заданию скопируйте в форму URL доступа к Вашему приложению: http://YOURPREFIX.fintech-admin.m1.tinkoff.cloud/form.
 
 #### Задание 3. Меняем метод отправки формы
 
