@@ -159,10 +159,10 @@
 	```yaml
 	...
 	scrape_configs:
-		...
-		- job_name: 'uwsgi_exporter'
-			static_configs:
-			- targets: ['localhost:9117']
+	  ...
+	  - job_name: 'uwsgi_exporter'
+	    static_configs:
+	    - targets: ['localhost:9117']
 	...
 	```
 
